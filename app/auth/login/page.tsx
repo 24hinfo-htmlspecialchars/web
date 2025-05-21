@@ -7,7 +7,13 @@ import { AuthError } from "@/features/auth/types";
 import Link from "next/link";
 
 
-export default async function Login({ searchParams }: { searchParams: { error: AuthError | null } }) {
+interface Props {
+  searchParams: {
+    error?: AuthError;
+  };
+}
+
+export default function LoginPage({ searchParams }: Readonly<Props>) {
   const error = searchParams?.error ?? null;
 
   return (

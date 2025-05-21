@@ -14,3 +14,15 @@ export type RegisterData = {
     password: string;
     confirmPassword: string;
 };
+
+export enum AuthError {
+    OAuthAccountNotLinked = "OAuthAccountNotLinked",
+    AccessDenied = "AccessDenied",
+    InvalidCredentials = "InvalidCredentials",
+    SessionExpired = "SessionExpired",
+    ProviderNotSupported = "ProviderNotSupported",
+    TooManyRequests = "TooManyRequests",
+    NetworkError = "NetworkError",
+    UnknownError = "UnknownError",
+    OAuthCallbackError = "OAuthCallbackError",
+}

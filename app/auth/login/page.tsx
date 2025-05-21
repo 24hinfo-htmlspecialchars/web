@@ -7,15 +7,14 @@ import { AuthError } from "@/features/auth/types";
 import Link from "next/link";
 
 
-interface LoginProps {
+interface Props {
   searchParams: {
-    error: AuthError | null;
+    error?: AuthError;
   };
 }
 
-
-export default async function LoginPage({ searchParams }: Readonly<LoginProps>) {
-  const { error } = await searchParams;
+export default function LoginPage({ searchParams }: Props) {
+  const error = searchParams?.error ?? null;
 
   return (
     <div className="relative flex items-center justify-center">

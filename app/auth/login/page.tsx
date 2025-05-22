@@ -8,13 +8,13 @@ import Link from "next/link";
 
 
 interface Props {
-  searchParams: {
-    error?: AuthError;
-  };
+  searchParams: Promise<{
+    error?: AuthError | null;
+  }>;
 }
 
-export default function LoginPage({ searchParams }: Readonly<Props>) {
-  const error = searchParams?.error ?? null;
+export default async function LoginPage({ searchParams }: Readonly<Props>) {
+  const { error } = await searchParams;
 
   return (
     <div className="relative flex items-center justify-center">

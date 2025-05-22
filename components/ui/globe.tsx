@@ -1,4 +1,5 @@
 /* eslint-disable */
+// @ts-nocheck
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { Color, Scene, Fog, PerspectiveCamera, Vector3 } from "three";

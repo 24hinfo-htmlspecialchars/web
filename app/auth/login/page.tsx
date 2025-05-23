@@ -2,10 +2,10 @@ import { Button } from "@/components/ui/button";
 import { ErrorHandler } from "@/features/auth/components/errorHandler";
 import { LoginForm } from "@/features/auth/components/forms/loginForm";
 import { GithubIcon } from "@/features/auth/components/icons/githubIcon";
+import { GoogleIcon } from "@/features/auth/components/icons/googleIcon";
 import { OAuthButton } from "@/features/auth/components/OAuthButton";
 import { AuthError } from "@/features/auth/types";
 import Link from "next/link";
-
 
 interface Props {
   searchParams: Promise<{
@@ -40,6 +40,12 @@ export default async function LoginPage({ searchParams }: Readonly<Props>) {
           </div>
           <div className="grid gap-1">
             <OAuthButton
+              provider="google"
+              label="Connexion avec Google"
+              Icon={GoogleIcon}
+              redirectTo="/app"
+            />
+            <OAuthButton
               provider="github"
               label="Connexion avec Github"
               Icon={GithubIcon}
@@ -58,7 +64,11 @@ export default async function LoginPage({ searchParams }: Readonly<Props>) {
           </Link>.
         </div> */}
       </div>
-      <Button asChild variant={"ghost"} className="absolute right-4 top-4 md:right-8 md:top-8">
+      <Button
+        asChild
+        variant={"ghost"}
+        className="absolute right-4 top-4 md:right-8 md:top-8"
+      >
         <Link href="/auth/register">Créer un compte</Link>
       </Button>
       <ErrorHandler error={error} />

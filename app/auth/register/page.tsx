@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { RegisterForm } from "@/features/auth/components/forms/registerForm";
 import { GithubIcon } from "@/features/auth/components/icons/githubIcon";
+import { GoogleIcon } from "@/features/auth/components/icons/googleIcon";
 import { OAuthButton } from "@/features/auth/components/OAuthButton";
 import Link from "next/link";
 
@@ -29,10 +30,16 @@ export default async function RegisterPage() {
                     </div>
                     <div className="grid gap-1">
                         <OAuthButton
+                            provider="google"
+                            label="Inscription avec Google"
+                            Icon={GoogleIcon}
+                            redirectTo="/app"
+                        />
+                        <OAuthButton
                             provider="github"
                             label="Inscription avec Github"
                             Icon={GithubIcon}
-                            redirectTo="/"
+                            redirectTo="/app"
                         />
                     </div>
                 </div>

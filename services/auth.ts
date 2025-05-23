@@ -3,6 +3,7 @@ import { encode as defaultEncode } from "next-auth/jwt"
 import { PrismaAdapter } from "@auth/prisma-adapter"
 import { prisma } from "@/prisma/prisma"
 import GitHub from "next-auth/providers/github"
+import Google from "next-auth/providers/google"
 import Credentials from "next-auth/providers/credentials"
 import { v4 as uuid } from "uuid"
 
@@ -18,6 +19,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   },
   providers: [
     GitHub,
+    Google,
     Credentials({
       credentials: {
         email: {},
@@ -37,7 +39,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     signIn: "/auth/login",
     signOut: "/auth/login",
     error: "/auth/login",
-    newUser: "/onboarding",
+    newUser: "/app",
   },
   callbacks: {
     async signIn() {

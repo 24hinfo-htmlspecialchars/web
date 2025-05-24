@@ -12,7 +12,7 @@ export default auth((req) => {
             return NextResponse.redirect(new URL("/", req.url));
         }
     } else if (!UNAUTH_ALLOWED.some((path) => pathname.startsWith(path))){
-        return NextResponse.redirect(new URL("/auth/login", req.url));
+       // return NextResponse.redirect(new URL("/auth/login", req.url));
     }
 
     return NextResponse.next();

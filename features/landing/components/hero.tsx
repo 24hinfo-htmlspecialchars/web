@@ -3,7 +3,7 @@ import { InteractiveHoverButton } from "@/components/magicui/interactive-hover-b
 
 export const Hero = () => {
   return (
-    <section>
+    <section id="hero">
       <div className="container">
         <div className="grid items-center gap-8 bg-muted-2 lg:grid-cols-2">
           <div className="flex flex-col items-center p-16 text-center lg:items-start lg:text-left">
@@ -20,7 +20,7 @@ export const Hero = () => {
             </div>
           </div>
           <img
-            src="https://shadcnblocks.com/images/block/placeholder-1.svg"
+            src="/landing/hero.jpg"
             alt="hero"
             className="w-full object-cover"
           />

@@ -28,8 +28,8 @@ export const Contact = ({
   phone = "+33 4 72 00 00 00",
 }: Contact7Props) => {
   return (
-    <section className="bg-background">
-    <div className="container px-4 lg:px-16">
+    <section id='contact' className="bg-background px-4 lg:px-16">
+    <div className="container">
         <div className="mb-14">
           <h1 className="mt-2 mb-3 text-3xl font-semibold text-balance md:text-4xl">
             {title}

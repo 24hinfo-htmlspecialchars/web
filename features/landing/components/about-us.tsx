@@ -22,28 +22,29 @@ interface About3Props {
 }
 
 export const About = ({
-  title = "About Us",
-  description = "Shadcnblocks is a passionate team dedicated to creating innovative solutions that empower businesses to thrive in the digital age.",
+  title = "À Propos",
+  description = "Derrière Lyon & Lumière se trouve une équipe passionnée, dédiée à transformer chaque visite en une expérience lumineuse inoubliable. " +
+    "Nos experts combinent savoir-faire, innovation et créativité pour vous offrir le meilleur de Lyon, au rythme de ses éclats et de ses histoires.",
   mainImage = {
-    src: "https://shadcnblocks.com/images/block/placeholder-1.svg",
-    alt: "placeholder",
+    src: "/landing/about/1.jpg",
+    alt: "Portraits dynamiques de notre équipe fondatrice engagée",
   },
   secondaryImage = {
-    src: "https://shadcnblocks.com/images/block/placeholder-2.svg",
-    alt: "placeholder",
+    src: "/landing/about/2.jpg",
+    alt: "Moments de collaboration et d’innovation au cœur de notre startup",
   },
   breakout = {
-    src: "https://shadcnblocks.com/images/block/block-1.svg",
-    alt: "logo",
-    title: "Hundreds of blocks at Shadcnblocks.com",
+    src: "/logo.svg",
+    alt: "Logo Lyon & Lumières symbolisant innovation et patrimoine",
+    title: "Une expertise lumineuse au service de votre découverte",
     description:
-      "Providing businesses with effective tools to improve workflows, boost efficiency, and encourage growth.",
-    buttonText: "Discover more",
-    buttonUrl: "https://shadcnblocks.com",
-  }
+      "Lyon & Lumières vous propose une plateforme innovante qui allie technologie et culture pour révéler la magie nocturne de la ville. ",
+    buttonText: "Explorez notre univers",
+    buttonUrl: "/app",
+  },
 }: About3Props = {}) => {
   return (
-    <section className="pb-32">
+    <section id='about' className="pb-32">
       <div className="container px-4 lg:px-16">
         <div className="mb-14 grid gap-5 text-center md:grid-cols-2 md:text-left">
           <h1 className="text-5xl font-semibold">{title}</h1>
@@ -60,14 +61,18 @@ export const About = ({
               <img
                 src={breakout.src}
                 alt={breakout.alt}
-                className="mr-auto h-12"
+                className="mr-auto h-12 invert-0 dark:invert"
               />
               <div>
                 <p className="mb-2 text-lg font-semibold">{breakout.title}</p>
                 <p className="text-muted-foreground">{breakout.description}</p>
               </div>
               <Button variant="outline" className="mr-auto" asChild>
-                <a href={breakout.buttonUrl} target="_blank">
+                <a
+                  href={breakout.buttonUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   {breakout.buttonText}
                 </a>
               </Button>

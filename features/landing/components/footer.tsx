@@ -27,92 +27,21 @@ interface Footer7Props {
 
 const defaultSections = [
   {
-    title: "Product",
+    title: "Menu",
     links: [
-      {
-        name: "Overview",
-        href: "#",
-        description:
-          "Découvrez les fonctionnalités phares qui révolutionnent votre expérience utilisateur.",
-      },
-      {
-        name: "Pricing",
-        href: "#",
-        description:
-          "Choisissez la formule adaptée à vos ambitions et bénéficiez d’un rapport qualité-prix imbattable.",
-      },
-      {
-        name: "Marketplace",
-        href: "#",
-        description:
-          "Accédez à notre écosystème dynamique de partenaires et extensions certifiés.",
-      },
-      {
-        name: "Features",
-        href: "#",
-        description:
-          "Explorez notre suite complète d’outils conçus pour maximiser votre performance.",
-      },
+      { name: "Accueil", href: "#hero" },
+      { name: "Catégories", href: "#features" },
+      { name: "A Propos", href: "#about" },
+      { name: "Contact", href: "#contact" },
     ],
   },
   {
-    title: "Company",
+    title: "App",
     links: [
-      {
-        name: "About",
-        href: "#",
-        description:
-          "Plongez au cœur de notre vision, de notre histoire et de notre engagement pour l’innovation.",
-      },
-      {
-        name: "Team",
-        href: "#",
-        description:
-          "Rencontrez les talents passionnés qui donnent vie à nos projets ambitieux.",
-      },
-      {
-        name: "Blog",
-        href: "#",
-        description:
-          "Inspirez-vous de nos dernières analyses, tendances et insights du secteur.",
-      },
-      {
-        name: "Careers",
-        href: "#",
-        description:
-          "Rejoignez une aventure humaine unique et façonnez le futur avec nous.",
-      },
-    ],
-  },
-  {
-    title: "Resources",
-    links: [
-      {
-        name: "Help",
-        href: "#",
-        description:
-          "Bénéficiez d’un support réactif et personnalisé à chaque étape.",
-      },
-      {
-        name: "Sales",
-        href: "#",
-        description:
-          "Découvrez comment notre équipe commerciale peut accompagner votre croissance.",
-      },
-      {
-        name: "Advertise",
-        href: "#",
-        description:
-          "Profitez de nos solutions publicitaires innovantes pour booster votre visibilité.",
-      },
-      {
-        name: "Privacy",
-        href: "#",
-        description:
-          "Consultez notre politique de confidentialité rigoureuse et transparente.",
-      },
-    ],
-  },
+      { name: "App", href: "/app" },
+      { name: "Carte", href: "/app/map" },
+    ]
+  }
 ];
 
 const defaultSocialLinks = [
@@ -163,32 +92,32 @@ const defaultLegalLinks = [
 
 export const Footer = ({
   logo = {
-    url: "https://www.shadcnblocks.com",
-    src: "https://www.shadcnblocks.com/images/block/logos/shadcnblockscom-icon.svg",
+    url: "/",
+    src: "/logo.svg",
     alt: "logo",
-    title: "Shadcnblocks.com",
+    title: "Lyon & Lumières",
   },
   sections = defaultSections,
-  description = "A collection of components for your startup business or side project.",
+  description = "Lyon & Lumières est une plateforme innovante qui vous plonge au cœur de la magie nocturne de Lyon.",
   socialLinks = defaultSocialLinks,
-  copyright = "© 2024 Shadcnblocks.com. All rights reserved.",
+  copyright = "© 2025 Lyon & Lumières. All rights reserved.",
   legalLinks = defaultLegalLinks,
 }: Footer7Props) => {
   return (
-    <section className="pt-32">
-      <div className="container px-4 lg:px-16">
+    <section className="pt-32 px-4 lg:px-16">
+      <div className="container">
         <div className="flex w-full flex-col justify-between gap-10 lg:flex-row lg:items-start lg:text-left">
           <div className="flex w-full flex-col justify-between gap-6 lg:items-start">
             {/* Logo */}
             <div className="flex items-center gap-2 lg:justify-start">
-              <a href={logo.url}>
+                <a href={logo.url}>
                 <img
                   src={logo.src}
                   alt={logo.alt}
                   title={logo.title}
-                  className="h-8"
+                  className="h-8 invert-0 dark:invert"
                 />
-              </a>
+                </a>
               <h2 className="text-xl font-semibold">{logo.title}</h2>
             </div>
             <p className="max-w-[70%] text-sm text-muted-foreground">

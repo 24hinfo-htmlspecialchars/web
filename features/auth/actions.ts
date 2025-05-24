@@ -7,7 +7,6 @@ import bcryptjs from "bcryptjs";
 import { ZodError } from "zod";
 import { AuthResponse, LoginData, RegisterData } from "./types";
 
-
 export async function handleLogin(data: LoginData): Promise<AuthResponse> {
     try {
         const validatedData = loginSchema.parse(data);

@@ -2,18 +2,21 @@
 
 import { usePlaces } from '@/context/placesContext'
 import Link from 'next/link'
+import { Card } from '@/components/ui/card'
 
 export default function ClientPage() {
   const { visiblePlaces } = usePlaces()
 
-  console.log('Visible Places:', visiblePlaces)
-
   return (
     <div className="w-80">
-      <h2>Visible IDs:</h2>
-      <ul>
-        {visiblePlaces.map(place => <li key={place.id}><Link href={`/app/map/${place.id}`}>{place.name}</Link></li>)}
-      </ul>
+      <h2>Liste des lieux visibles</h2>
+      <div className="flex flex-col gap-2">
+        {visiblePlaces.map(place => <Card key={place.id}>
+          
+          <Link href={`/app/map/${place.id}`}>{place.name}</Link>
+        
+        </Card>)}
+      </div>
     </div>
   )
 }

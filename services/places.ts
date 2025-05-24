@@ -15,7 +15,7 @@ type RawLieu = {
   liens?: { lien: string }[];
 }
 
-function transformLieuToPlace(lieu: RawLieu): Place {
+function transformLieuToPlace(lieu: RawLieu & { images?: { url: string }[] }): Place {
   return {
     id: lieu.lieu_id,
     theme: lieu.theme.label,
@@ -27,7 +27,7 @@ function transformLieuToPlace(lieu: RawLieu): Place {
       longitude: parseFloat(lieu.longitude),
     },
     audio: lieu.audio?.url || "",
-    images: (lieu.liens || []).map(img => img.lien),
+    images: (lieu.images || []).map(img => img.url),
   }
 }
 
@@ -41,9 +41,29 @@ export const fetchPlaces = async (): Promise<Place[]> => {
         liens: true,
       },
     });
-    return lieux.map(transformLieuToPlace);
+
+    const allImages = await prisma.Image.findMany({
+			select: {
+				url: true,
+				lieuId: true,
+			},
+		});
+
+    const imagesByLieu: Record<string, string[]> = {};
+    for (const { url, lieuId } of allImages) {
+      if (!imagesByLieu[lieuId]) imagesByLieu[lieuId] = [];
+      imagesByLieu[lieuId].push(url);
+    }
+
+    return lieux.map(lieu =>
+      transformLieuToPlace({
+        ...lieu,
+        images: imagesByLieu[lieu.lieu_id] || []
+      })
+    );
+
   } catch (error) {
     console.error("Error fetching places:", error);
     return [];
   }
-}
+};

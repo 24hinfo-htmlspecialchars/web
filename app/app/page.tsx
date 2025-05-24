@@ -4,7 +4,7 @@ import { fetchPlaces } from "@/services/places";
 
 export default async function Home() {
   const allPlaces = await fetchPlaces();
-  const popularPlaces = allPlaces.slice(0, 4);
+  const popularPlaces = allPlaces.slice(1, 5);
 
   return (
     <>

@@ -1,3 +1,4 @@
+import { ImageLieu } from './../node_modules/.prisma/client/index.d';
 'use server'
 
 import { Place } from "@/features/map/types"
@@ -42,7 +43,7 @@ export const fetchPlaces = async (): Promise<Place[]> => {
       },
     });
 
-    const allImages = await prisma.Image.findMany({
+    const allImages = await prisma.ImageLieu.findMany({
 			select: {
 				url: true,
 				lieuId: true,

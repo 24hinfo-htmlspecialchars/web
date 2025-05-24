@@ -14,9 +14,11 @@ export const Hero = () => {
               Découvrez Lyon comme vous ne l&apos;avez jamais vue : une balade nocturne immersive entre installations lumineuses, récits captivants et histoires secrètes.
               Explorez, écoutez, et créez votre propre parcours lumineux au fil des rues, des monuments et des légendes.            </p>
             <div className="flex w-full flex-col justify-center gap-2 sm:flex-row lg:justify-start">
-              <InteractiveHoverButton className="px-6 py-4">
-                <a href="/app">Commencer l&apos;aventure</a>
-              </InteractiveHoverButton>
+              <a href="/app">
+                <InteractiveHoverButton className="px-6 py-4">
+                  Commencer l&apos;aventure
+                </InteractiveHoverButton>
+              </a>
             </div>
           </div>
           <img

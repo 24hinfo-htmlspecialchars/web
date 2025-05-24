@@ -23,6 +23,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { ModeToggle } from "@/components/mode-toggle";
 
 interface MenuItem {
   title: string;
@@ -82,6 +83,7 @@ export const Header = ({
               <NavigationMenu>
                 <NavigationMenuList>
                   {menu.map((item) => renderMenuItem(item))}
+                  <ModeToggle></ModeToggle>
                 </NavigationMenuList>
               </NavigationMenu>
             </div>
@@ -121,6 +123,7 @@ export const Header = ({
                     className="flex w-full flex-col gap-4"
                   >
                     {menu.map((item) => renderMobileMenuItem(item))}
+                    <ModeToggle></ModeToggle>
                   </Accordion>
 
                   <div className="flex flex-col gap-3">

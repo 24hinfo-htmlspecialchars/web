@@ -41,9 +41,11 @@ export const Features = () => {
                 unique.
               </p>
               <div className="w-fit pt-4">
-                <InteractiveHoverButton>
-                  <a href="/app/map?theme=urbaines">Voir les lieux</a>
-                </InteractiveHoverButton>
+                <a href="/app/map?theme=urbaines">
+                  <InteractiveHoverButton>
+                    Voir les lieux
+                  </InteractiveHoverButton>
+                </a>
               </div>
             </div>
           </div>
@@ -61,9 +63,11 @@ export const Features = () => {
                 l'histoire du cinéma.
               </p>
               <div className="w-fit pt-4">
-                <InteractiveHoverButton>
-                  <a href="/app/map?theme=cinema">Voir les lieux</a>
-                </InteractiveHoverButton>
+                <a href="/app/map?theme=cinema">
+                  <InteractiveHoverButton>
+                    Voir les lieux
+                  </InteractiveHoverButton>
+                </a>
               </div>
             </div>
             <div className="md:min-h-[24rem] lg:min-h-[28rem] xl:min-h-[32rem]">
@@ -95,9 +99,11 @@ export const Features = () => {
                 avant-gardiste.
               </p>
               <div className="w-fit pt-4">
-                <InteractiveHoverButton>
-                  <a href="/app/map?theme=symboliques">Voir les lieux</a>
-                </InteractiveHoverButton>
+                <a href="/app/map?theme=symboliques">
+                  <InteractiveHoverButton>
+                    Voir les lieux
+                  </InteractiveHoverButton>
+                </a>
               </div>
             </div>
           </div>

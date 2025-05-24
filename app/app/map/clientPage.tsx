@@ -2,21 +2,65 @@
 
 import { usePlaces } from '@/context/placesContext'
 import Link from 'next/link'
-import { Card } from '@/components/ui/card'
+import { Card, CardContent, CardTitle } from '@/components/ui/card'
+import { MapPin, Music, ImageIcon, Landmark } from 'lucide-react'
+import Image from 'next/image'
+
+function getThemeIcon(theme: string) {
+	switch (theme.toLowerCase()) {
+		case 'musique':
+			return <Music className="w-5 h-5 text-blue-500" />
+		case 'art':
+			return <ImageIcon className="w-5 h-5 text-pink-500" />
+		case 'histoire':
+			return <Landmark className="w-5 h-5 text-yellow-600" />
+		default:
+			return <MapPin className="w-5 h-5 text-gray-500" />
+	}
+}
 
 export default function ClientPage() {
-  const { visiblePlaces } = usePlaces()
+	const { visiblePlaces } = usePlaces()
 
-  return (
-    <div className="w-80">
-      <h2>Liste des lieux visibles</h2>
-      <div className="flex flex-col gap-2">
-        {visiblePlaces.map(place => <Card key={place.id}>
-          
-          <Link href={`/app/map/${place.id}`}>{place.name}</Link>
-        
-        </Card>)}
-      </div>
-    </div>
-  )
+	return (
+		<div className="w-full px-4 h-screen flex flex-col">
+			<h2 className="text-xl font-bold mb-4">Liste des lieux visibles</h2>
+
+			{/* Zone scrollable verticale avec une hauteur calculée */}
+			<div className="flex flex-col gap-4 overflow-y-auto flex-1 pb-4 pr-1">
+				{visiblePlaces.map(place => (
+					<Card
+						key={place.id}
+						className="flex flex-row hover:shadow-lg transition-shadow"
+					>
+						{place.images.length > 0 && (
+							<div className="relative w-32 h-32 flex-shrink-0">
+								<Image
+									src={place.images[0]}
+									alt={place.name}
+									fill
+									className="object-cover"
+								/>
+							</div>
+						)}
+
+						<div className="flex flex-col justify-between p-3 flex-1">
+							<CardTitle className="text-base font-semibold">
+								{place.name}
+							</CardTitle>
+							{getThemeIcon(place.theme)}
+							<CardContent className="p-0 pt-1">
+								<Link
+									href={`/app/map/${place.id}`}
+									className="text-sm text-blue-600 hover:underline mt-2 inline-block"
+								>
+									Voir plus →
+								</Link>
+							</CardContent>
+						</div>
+					</Card>
+				))}
+			</div>
+		</div>
+	)
 }

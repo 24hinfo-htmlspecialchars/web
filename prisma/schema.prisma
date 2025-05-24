@@ -9,23 +9,23 @@ datasource db {
 }
 
 model User {
-  id            String       @id @default(cuid())
+  id            String    @id @default(cuid())
   firstName     String?
   lastName      String?
   name          String?
-  email         String       @unique
+  email         String    @unique
   emailVerified DateTime?
   password      String?
   image         String?
-  userType      UserType?    @relation(fields: [userTypeId], references: [id])
+  userType      UserType? @relation(fields: [userTypeId], references: [id])
   userTypeId    String?
 
-  accounts      Account[]
-  sessions      Session[]
-  favoris       FavorisDe[] // lieux favoris
+  accounts Account[]
+  sessions Session[]
+  favoris  FavorisDe[] // lieux favoris
 
-  createdAt     DateTime     @default(now())
-  updatedAt     DateTime     @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Account {
@@ -41,10 +41,10 @@ model Account {
   id_token          String?
   session_state     String?
 
-  user              User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  createdAt         DateTime   @default(now())
-  updatedAt         DateTime   @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@id([provider, providerAccountId])
 }
@@ -54,10 +54,10 @@ model Session {
   userId       String
   expires      DateTime
 
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model UserType {
@@ -66,68 +66,68 @@ model UserType {
   name        String
   description String?
 
-  users       User[]
+  users User[]
 
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Theme {
   theme_id String @id @default(cuid())
   label    String
 
-  lieux    Lieu[]
+  lieux Lieu[]
 }
 
 model Lieu {
-  lieu_id     String       @id @default(cuid())
-  label       String
-  adresse     String
-  latitude    String
-  longitude   String
+  lieu_id   String @id @default(cuid())
+  label     String
+  adresse   String
+  latitude  String
+  longitude String
 
-  themeId     String
-  theme       Theme        @relation(fields: [themeId], references: [theme_id], onDelete: Cascade)
+  themeId String
+  theme   Theme  @relation(fields: [themeId], references: [theme_id], onDelete: Cascade)
 
-  audioId     String?      @unique
-  audio       Audioia?     @relation(fields: [audioId], references: [id])
+  audioId String?  @unique
+  audio   Audioia? @relation(fields: [audioId], references: [id])
 
   liens       Lien[]
   paragraphes Paragraphe[]
   favoris     FavorisDe[]
 
-  createdAt   DateTime     @default(now())
-  updatedAt   DateTime     @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Audioia {
-  id      String @id @default(cuid())
-  url     String
-  label   String
+  id    String @id @default(cuid())
+  url   String
+  label String
 
-  lieu    Lieu?  @relation
+  lieu Lieu? @relation
 }
 
 model Lien {
-  id      String @id @default(cuid())
-  lien    String
-  lieuId  String
-  lieu    Lieu   @relation(fields: [lieuId], references: [lieu_id], onDelete: Cascade)
+  id     String @id @default(cuid())
+  lien   String
+  lieuId String
+  lieu   Lieu   @relation(fields: [lieuId], references: [lieu_id], onDelete: Cascade)
 }
 
 model Paragraphe {
-  id              String @id @default(cuid())
-  description_md  String
-  lieuId          String
-  lieu            Lieu   @relation(fields: [lieuId], references: [lieu_id], onDelete: Cascade)
+  id             String @id @default(cuid())
+  description_md String
+  lieuId         String
+  lieu           Lieu   @relation(fields: [lieuId], references: [lieu_id], onDelete: Cascade)
 }
 
 model FavorisDe {
   userId String
   lieuId String
 
-  user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
-  lieu   Lieu @relation(fields: [lieuId], references: [lieu_id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  lieu Lieu @relation(fields: [lieuId], references: [lieu_id], onDelete: Cascade)
 
   @@id([userId, lieuId])
 }

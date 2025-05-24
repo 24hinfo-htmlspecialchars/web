@@ -104,3 +104,17 @@ export async function getUserFromDb(email: string, password: string) {
         return null;
     }
 }
+
+export async function getPlacesFromDb() {
+    try {
+        const places = await prisma.places.findMany();
+        if (!places) {
+            console.error("No places found");
+            return null;
+        }
+        return places;
+    } catch (error) {
+        console.error("Error getting places from DB:", error);
+        return null;
+    }
+}

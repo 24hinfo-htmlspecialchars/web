@@ -1,5 +1,5 @@
 import { PlaceCard } from "@/components/card-lieu";
-import { HeaderC } from "@/components/layout/header";
+import { Header } from "@/components/layout/header";
 import { fetchPlaces } from "@/services/places";
 
 export default async function Home() {
@@ -8,7 +8,7 @@ export default async function Home() {
 
   return (
     <>
-      <HeaderC />
+      <Header />
 
       <div className="p-8 space-y-12">
         {/* Section populaire */}

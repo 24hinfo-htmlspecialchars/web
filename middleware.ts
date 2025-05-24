@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/services/auth";
 
-const UNAUTH_ALLOWED = ["/auth/", "/api/"]; // Add paths that should be allowed for unauthenticated users
+const UNAUTH_BLOCKED = ["/app"]; // Add paths that should be blocked for unauthenticated users
 const AUTH_BLOCKED = ["/auth/"]; // Add paths that should be blocked for authenticated users
 
 export default auth((req) => {
@@ -11,7 +11,8 @@ export default auth((req) => {
         if (AUTH_BLOCKED.some((path) => pathname.startsWith(path))) {
             return NextResponse.redirect(new URL("/", req.url));
         }
-     } else if (!UNAUTH_ALLOWED.some((path) => pathname.startsWith(path) || pathname === "/")) {
+    }
+    else if (!UNAUTH_BLOCKED.some((path) => !pathname.startsWith(path))) {
          return NextResponse.redirect(new URL("/auth/login", req.url));
     }
 

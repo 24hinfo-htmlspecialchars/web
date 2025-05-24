@@ -1,4 +1,3 @@
-import { ImageLieu } from './../node_modules/.prisma/client/index.d';
 'use server'
 
 import { Place } from "@/features/map/types"
@@ -16,7 +15,7 @@ type RawLieu = {
   liens?: { lien: string }[];
 }
 
-function transformLieuToPlace(lieu: RawLieu & { images?: { url: string }[] }): Place {
+function transformLieuToPlace(lieu: RawLieu & { images?: string[] }): Place {
   return {
     id: lieu.lieu_id,
     theme: lieu.theme.label,
@@ -28,7 +27,7 @@ function transformLieuToPlace(lieu: RawLieu & { images?: { url: string }[] }): P
       longitude: parseFloat(lieu.longitude),
     },
     audio: lieu.audio?.url || "",
-    images: (lieu.images || []).map(img => img.url),
+    images: lieu.images || [],
   }
 }
 
@@ -43,17 +42,17 @@ export const fetchPlaces = async (): Promise<Place[]> => {
       },
     });
 
-    const allImages = await prisma.ImageLieu.findMany({
+    const allImages = await prisma.imageLieu.findMany({
 			select: {
-				url: true,
+				imagepath: true,
 				lieuId: true,
 			},
 		});
 
     const imagesByLieu: Record<string, string[]> = {};
-    for (const { url, lieuId } of allImages) {
+    for (const { imagepath, lieuId } of allImages) {
       if (!imagesByLieu[lieuId]) imagesByLieu[lieuId] = [];
-      imagesByLieu[lieuId].push(url);
+      imagesByLieu[lieuId].push(imagepath);
     }
 
     return lieux.map(lieu =>

@@ -1,6 +1,6 @@
 import ClientPage from "./clientPage";
 
-export default function Places() {
+export default async function Places() {
   return (
     <ClientPage />
   );

@@ -7,7 +7,7 @@ import { Place } from '@/features/map/types';
 type PlacesContextType = {
 	places: Place[];
 	visiblePlaces: Place[];
-	setVisiblePlaces: (ids: Place[]) => void;
+	setVisiblePlaces: (places: Place[]) => void;
 	loading: boolean;
 };
 
@@ -19,17 +19,19 @@ export function usePlaces() {
 	return ctx;
 }
 
-export function PlacesProvider({ children }: { children: React.ReactNode }) {
-	const [places, setPlaceIds] = useState<Place[]>([]);
+export function PlacesProvider({ children, theme }: { children: React.ReactNode, theme: string }) {
+	const [places, setPlaces] = useState<Place[]>([]);
 	const [visiblePlaces, setVisiblePlaces] = useState<Place[]>([]);
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
-		fetchPlaces().then(ids => {
-			setPlaceIds(ids);
+		fetchPlaces().then(allPlaces => {
+			const filtered = theme ? allPlaces.filter(place => place.theme === theme) : allPlaces;
+			setPlaces(filtered);
+			setVisiblePlaces(filtered);
 			setLoading(false);
 		});
-	}, []);
+	}, [theme]);
 
 	return (
 		<PlacesContext.Provider value={{ places, visiblePlaces, setVisiblePlaces, loading }}>

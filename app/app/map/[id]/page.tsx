@@ -1,13 +1,14 @@
-import Place from "./place";
+import PlaceComp from "./place-comp";
+import { getPlace } from "@/features/map/action";
+import { Place } from "@/features/map/types";
 
-export default async function PlacePage({ params, searchParams }: {
+export default async function PlacePage({ params }: {
 	params: Promise<{ id: string }>,
-	searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }) {
   const { id } = await params;
-  const searchParamsObj = await searchParams;
+	const place: Place = await getPlace(id);
 
 	return (
-		<Place id={id} searchParams={searchParamsObj} />
+		<PlaceComp place={place} />
 	);
 }

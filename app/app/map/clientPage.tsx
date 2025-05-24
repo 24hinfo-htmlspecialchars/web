@@ -9,7 +9,7 @@ export default function ClientPage() {
   console.log('Visible Places:', visiblePlaces)
 
   return (
-    <div className="w-80">
+    <div className="p-4 w-80">
       <h2>Visible IDs:</h2>
       <ul>
         {visiblePlaces.map(place => <li key={place.id}><Link href={`/app/map/${place.id}`}>{place.name}</Link></li>)}

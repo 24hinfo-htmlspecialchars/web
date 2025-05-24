@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { useEffect, useState } from "react"
+import Image from "next/image"
 import { Place } from "@/features/map/types"
 import { marked } from "marked"
 import DOMPurify from "dompurify"
@@ -40,7 +41,7 @@ export default function PlaceComp({ place }: { place: Place }) {
               {place.images?.map((img, index) => (
                 <CarouselItem key={index}>
                   <div className="aspect-[4/3] w-full relative">
-                    <img
+                    <Image
                       src={img}
                       alt={`Image ${index + 1}`}
                       className="object-cover w-full h-full"

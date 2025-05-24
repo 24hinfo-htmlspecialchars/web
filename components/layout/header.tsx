@@ -1,5 +1,4 @@
-import { Book, Menu, Sunset, Trees, Zap } from "lucide-react";
-import { InteractiveHoverButton } from "@/components/magicui/interactive-hover-button";
+import { Menu } from "lucide-react";
 
 import {
   Accordion,
@@ -24,6 +23,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { ModeToggle } from "@/components/mode-toggle";
+import Image from "next/image";
 
 interface MenuItem {
   title: string;
@@ -68,7 +68,7 @@ export const Header = ({
           <div className="flex items-center gap-6">
             {/* Logo */}
             <a href={logo.url} className="flex items-center gap-2">
-              <img src={logo.src} className="h-8 invert-0 dark:invert" alt={logo.alt} />
+              <Image src={logo.src} className="h-8 invert-0 dark:invert" alt={logo.alt} />
               <span className="text-lg font-semibold tracking-tighter">
                 {logo.title}
               </span>
@@ -89,7 +89,7 @@ export const Header = ({
           <div className="flex items-center justify-between">
             {/* Logo */}
             <a href={logo.url} className="flex items-center gap-2">
-              <img src={logo.src} className="max-h-8" alt={logo.alt} />
+              <Image src={logo.src} className="max-h-8" alt={logo.alt} />
             </a>
             <Sheet>
               <SheetTrigger asChild>
@@ -101,7 +101,7 @@ export const Header = ({
                 <SheetHeader>
                   <SheetTitle>
                     <a href={logo.url} className="flex items-center gap-2">
-                      <img src={logo.src} className="max-h-8" alt={logo.alt} />
+                      <Image src={logo.src} className="max-h-8" alt={logo.alt} />
                     </a>
                   </SheetTitle>
                 </SheetHeader>

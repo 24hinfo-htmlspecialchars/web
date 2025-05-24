@@ -22,7 +22,6 @@ export function PlaceList({ places }: Props) {
           key={index}
           images={place.images}
           name={place.name}
-          rating={place.rating}
           address={place.address}
         />
       ))}

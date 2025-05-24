@@ -1,13 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Globe } from "./globe";
+import Image from "next/image";
 
 export const BackgroundSection = () => {
   return (
     <div className="hidden bg-muted lg:block relative h-screen overflow-hidden">
       <div className="absolute inset-0">
-        <Globe />
+        <Image src="/login-bg.png" alt="Carte de Lyon" fill className="w-full h-full"/>
       </div>
       <motion.div
         initial={{

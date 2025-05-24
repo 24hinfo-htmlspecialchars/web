@@ -44,6 +44,7 @@ export default function PlaceComp({ place }: { place: Place }) {
                     <Image
                       src={img}
                       alt={`Image ${index + 1}`}
+                      fill
                       className="object-cover w-full h-full"
                     />
                   </div>

@@ -8,7 +8,9 @@ export default function RootLayout({
   return (
     <>
       <Header />
-      {children}
+      <main className="relative overflow-hidden">
+        {children}
+      </main>
     </>
   );
 }

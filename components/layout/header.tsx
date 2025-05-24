@@ -68,7 +68,7 @@ export const Header = ({
           <div className="flex items-center gap-6">
             {/* Logo */}
             <a href={logo.url} className="flex items-center gap-2">
-              <Image src={logo.src} className="h-8 invert-0 dark:invert" alt={logo.alt} />
+              <Image src={logo.src} className="h-8 invert-0 dark:invert" alt={logo.alt} width={32} height={32} />
               <span className="text-lg font-semibold tracking-tighter">
                 {logo.title}
               </span>
@@ -89,7 +89,7 @@ export const Header = ({
           <div className="flex items-center justify-between">
             {/* Logo */}
             <a href={logo.url} className="flex items-center gap-2">
-              <Image src={logo.src} className="max-h-8" alt={logo.alt} />
+              <Image src={logo.src} className="max-h-8" alt={logo.alt} width={32} height={32} />
             </a>
             <Sheet>
               <SheetTrigger asChild>
@@ -101,7 +101,7 @@ export const Header = ({
                 <SheetHeader>
                   <SheetTitle>
                     <a href={logo.url} className="flex items-center gap-2">
-                      <Image src={logo.src} className="max-h-8" alt={logo.alt} />
+                      <Image src={logo.src} className="max-h-8" alt={logo.alt} width={32} height={32} />
                     </a>
                   </SheetTitle>
                 </SheetHeader>

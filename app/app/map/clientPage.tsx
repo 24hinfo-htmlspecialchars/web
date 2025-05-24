@@ -2,20 +2,20 @@
 
 import { usePlaces } from '@/context/placesContext'
 import Link from 'next/link'
-import { Card, CardContent, CardTitle } from '@/components/ui/card'
-import { MapPin, Music, ImageIcon, Landmark } from 'lucide-react'
 import Image from 'next/image'
+import { Card, CardContent, CardTitle } from '@/components/ui/card'
+import { Building2, Clapperboard, Star } from 'lucide-react'
 
 function getThemeIcon(theme: string) {
 	switch (theme.toLowerCase()) {
-		case 'musique':
-			return <Music className="w-5 h-5 text-blue-500" />
-		case 'art':
-			return <ImageIcon className="w-5 h-5 text-pink-500" />
-		case 'histoire':
-			return <Landmark className="w-5 h-5 text-yellow-600" />
-		default:
-			return <MapPin className="w-5 h-5 text-gray-500" />
+		case 'urbaines':
+      return <span className="text-xl text-gray-500"><Building2 /></span>
+    case 'cinéma':
+      return <span className="text-xl text-gray-500"><Clapperboard /></span>
+    case 'symbolique':
+      return <span className="text-xl text-gray-500"><Star /></span>
+    default:
+      return null
 	}
 }
 
